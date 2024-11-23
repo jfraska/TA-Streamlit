@@ -4,3 +4,5 @@ Sastrawi
 openpyxl
 plotly
 torch
+scikit-learn
+seaborn

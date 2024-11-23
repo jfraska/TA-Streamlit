@@ -1,9 +1,11 @@
-version: "3"
+version: '3.8'
+
 services:
   streamlit:
-    build: .
-    command: "streamlit run src/main.py"
+    build:
+      context: .
+    container_name: ta_streamlit
     ports:
       - "8501:8501"
     volumes:
-      - "./src:/usr/src/app/src"
+      - .:/usr/src/app

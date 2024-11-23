@@ -197,7 +197,8 @@ if st.button('Klasifikasi'):
     
     # Menampilkan hasil sigmoid
     st.subheader("Hasil Sigmoid :")
-    st.write(output.numpy())
+    df = pd.DataFrame(output.numpy(), index=target_list, columns=['Values'])
+    st.write(df)
     
     # thresholding at 0.5
     output = output.flatten().round().numpy()

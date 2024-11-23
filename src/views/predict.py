@@ -179,10 +179,11 @@ if st.button('Klasifikasi'):
     # Menampilkan hasil tokenisasi
     st.subheader("BERT Tokenisasi :")
     
-    tokens_df = pd.DataFrame([tokens])
-    st.write("Tokenisasi wordpiece:", tokens_df)
+    tokens_df = pd.DataFrame(tokens)
+    tokens_df.columns = ['token']
+    st.write(tokens_df)
 
-    st.write("Input IDs:", encoded_text['input_ids'].numpy())
+    # st.write("Input IDs:", encoded_text['input_ids'].numpy())
 
     # Tambahkan spasi untuk tampilan yang lebih bersih
     st.markdown("---")  # Garis pemisah
@@ -197,11 +198,17 @@ if st.button('Klasifikasi'):
     
     # Menampilkan hasil sigmoid
     st.subheader("Hasil Sigmoid :")
-    df = pd.DataFrame(output.numpy(), index=target_list, columns=['Values'])
-    st.write(df)
+    sigmoid = output.squeeze()
+    df_sigmoid = pd.DataFrame(sigmoid.numpy(), index=target_list)
+    df_sigmoid.columns = ['probabilitas']
+    st.write(df_sigmoid)
     
     # thresholding at 0.5
     output = output.flatten().round().numpy()
+        
+    df = pd.DataFrame(output, index=target_list)
+    df.columns = ['probabilitas']
+    st.write(df)
         
     # Tambahkan spasi untuk tampilan yang lebih bersih
     st.markdown("---")  # Garis pemisah    

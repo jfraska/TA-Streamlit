@@ -58,6 +58,8 @@ with tabs[0]:
     # Tambahkan spasi untuk tampilan yang lebih bersih
     st.markdown("---")  # Garis pemisah
 
+    st.subheader("Training History")
+
     plt.rcParams["figure.figsize"] = (10,7)
     plt.plot(history['train_acc'], label='train accuracy')
     plt.plot(history['val_acc'], label='validation accuracy')
@@ -88,6 +90,7 @@ with tabs[0]:
     # Tambahkan spasi untuk tampilan yang lebih bersih
     st.markdown("---")  # Garis pemisah
 
+    st.subheader("Hasil Performa Model")
 
     # Menghasilkan laporan klasifikasi dalam bentuk dictionary
     report_dict = classification_report(target_values, predictions, target_names=target_list, output_dict=True)
